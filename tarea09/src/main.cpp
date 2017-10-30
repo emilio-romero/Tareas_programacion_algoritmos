@@ -3,7 +3,7 @@
 using namespace std; 
 int main(){
 srand(time(NULL));
-int n=4;
+int n=6;
 int **grafo=(int**)malloc(n*sizeof(int*));
 for(int i=0;i<n;i++) grafo[i]=(int*)malloc(n*sizeof(int));
   creaGrafo(grafo,n);
@@ -14,7 +14,7 @@ for(int i=0;i<n;i++) grafo[i]=(int*)malloc(n*sizeof(int));
     } cout<<"\n";
   }
   algDijkstra(grafo,n,0,n-1);
-
+  drawGraph(grafo,n,1);
 for(int i=0;i<n;i++) free(grafo[i]);
 free(grafo);
 cout<<"Su programa ha terminado\n";
