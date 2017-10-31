@@ -43,7 +43,7 @@ double space=2*M_PI/(double)n;//Cuantos nodos se dibujaran
   cr=cairo_create(surface);
   cairo_set_line_width(cr,2);
 /*Dibujo del grafo*/
-  dibujaVertices(cr,G,n); 
+  dibujaAristas(cr,G,n); 
   dibujaNodos(cr,n,colorn);
 /*Fin dibujado de grafo*/
   cairo_surface_write_to_png(surface,"migrafo.png");
@@ -63,7 +63,7 @@ void creaLinea(cairo_t *cr, int x1, int y1, int x2, int y2){
   cairo_stroke(cr);
 }
 
-void dibujaVertices(cairo_t *cr, int **G, int n){
+void dibujaAristas(cairo_t *cr, int **G, int n){
   double space=2*M_PI/(double)n;//Cuantos nodos se dibujaran
   int nx, ny;
   int nnx, nny;
@@ -79,7 +79,8 @@ void dibujaVertices(cairo_t *cr, int **G, int n){
       if(G[i][j]!=0){
         creaLinea(cr,nx,ny,nnx,nny);
         cairo_set_source_rgb (cr,0,0,0);
-        cairo_move_to(cr,(nx+20*(nnx-nx)),(ny+20*(nny-ny)));
+        m=calculaPendiente(nx,ny,nnx,nny);
+        cairo_move_to(cr,(nx+30*m),(ny+30/(-m)));
         sprintf(weinodo,"%d",G[i][j]);
         cairo_show_text(cr,weinodo);
 

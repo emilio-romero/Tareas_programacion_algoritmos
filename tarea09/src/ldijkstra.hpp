@@ -14,6 +14,6 @@ int drawGraph(int **G, int n, int tipo);
 void creaNodo(cairo_t *cr,int x0,int y0,double *color);
 void creaLinea(cairo_t *cr,int x1,int y1, int x2, int y2);
 void dibujaNodos(cairo_t *cr, int n,double *color);
-void dibujaVertices(cairo_t *cr,int **G , int n);
+void dibujaAristas(cairo_t *cr,int **G , int n);
 double calculaPendiente(int x1, int y1, int x2, int y2);
 #endif 
