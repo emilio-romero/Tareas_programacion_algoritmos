@@ -113,13 +113,25 @@ double randx(){
   aux=(rand()/static_cast<double>(RAND_MAX));
 return aux;}
 
-void readData(int nr, int nc, char *cfile, double **data, double *expected){
-  data=(double**)malloc(nr*sizeof(double));
-  expected=(double*)malloc(nr*sizeof(double));
-  for(int i=0;i<nr;i++) data[i]=(double*)malloc((nc-1)*sizeof(double));
-  FILE *in; 
-  in=fopen(cfile,"r");
-  
-  fclose(in);
+void readData(int nr, int nc, std::string cfile, double **data, double *expected){
+  std::ifstream mifile;
+  mifile.open(cfile);
+  std::string valor;
+  for(int mi=0;mi<nr;mi++){
+    for(int j=0;j<nc-1;j++){
+    getline(mifile,valor,',');
+    data[mi][j]=std::stod(valor);
+    
+  //std::cout<<data[mi][j]<<" ";
+   }
+    getline(mifile,valor,'\n');
+    expected[mi]=std::stod(valor);
+  }
+  mifile.close();
 }
 
+void liberaData(int nr, int nc, double **data, double *expected){
+  for(int i=0;i<nr;i++) free(data[i]);
+  free(data);
+  free(expected); 
+}

@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <string>
 #include <ctime>
+#include <fstream>
 void nofuncion();
 /*Clase neurona*/
 class Neurona{
@@ -55,6 +56,6 @@ public:
 };
 /*Funciones para todos*/
 double randx();
-void readData(int nr, int nc, char *cfile, double **data, double *expected);
-
+void readData(int nr, int nc, std::string cfile, double **data, double *expected);
+void liberaData(int nr, int nc, double **data, double *expected);
 #endif 

@@ -13,11 +13,11 @@ OBJDIR:=obj
 all: bin/$(EXEC)
 recortar: bin/recortar
 bin/$(EXEC):$(OBJS) | bin  
-	g++ -o $@ $(OBJS) -lm -lcairo
+	g++ -o $@ $(OBJS) -std=c++0x -lm -lcairo
 bin:
 	mkdir -p $@
 $(OBJDIR)/%.o: src/%.cpp | $(OBJDIR)
-	g++ $(CFLAGS) -lm -lcairo $< -o $@
+	g++ $(CFLAGS) -std=c++0x -lm -lcairo $< -o $@
 $(OBJDIR): 
 	mkdir -p $@ 
 
